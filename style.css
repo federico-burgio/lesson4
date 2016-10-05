@@ -1,0 +1,27 @@
+
+.add-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+md-tabs.md-dynamic-height md-tabs-content-wrapper,
+md-tab-content.md-no-scroll,
+md-tab-content.md-no-scroll>div,
+.no-scroll {
+    height: 100%;
+    overflow-y: hidden !important;
+}
+
+.scroll {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tab-content {
+    height: calc(100% - 50px);
+}
+
+.selected {
+    background: #efefef;
+}

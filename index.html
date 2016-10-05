@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task App</title>
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- App Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!-- Code Behind -->
+    <script src="script.js"></script>
+    <script src="customList.directive.js"></script>
+    <script src="storageService.js"></script>
+
+</head>
+
+<body ng-app="todoApp" class="no-scroll">
+    <div ng-controller="TodoController as ctrl" class="no-scroll">
+        <div layout="column" class="no-scroll">
+            <md-toolbar class="md-whiteframe-3dp">
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <span>Task App</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button ng-disabled="ctrl.selectedItem == null" ng-click="ctrl.deleteItem()" class="md-icon-button" aria-label="Delete">
+                        <md-icon> delete </md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content class="no-scroll">
+                <md-tabs md-dynamic-height md-border-bottom class="no-scroll">
+                    <md-tab label="Todo">
+                        <custom-list items="ctrl.items" selected-item="ctrl.selectedItem" filter-function="ctrl.notDone"></custom-list>
+                    </md-tab>
+                    <md-tab label="Done">
+                        <custom-list items="ctrl.items" selected-item="ctrl.selectedItem" filter-function="ctrl.done"></custom-list>
+                    </md-tab>
+                    <md-tab label="All">
+                        <custom-list items="ctrl.items" selected-item="ctrl.selectedItem" filter-function="ctrl.all"></custom-list>
+                    </md-tab>
+                </md-tabs>
+                <md-button class="md-fab md-primary add-button" aria-label="Add Todo" ng-click="ctrl.addTask($event)">
+                    <md-icon>add</md-icon>
+                </md-button>
+            </md-content>
+
+        </div>
+</body>
+
+</html>
